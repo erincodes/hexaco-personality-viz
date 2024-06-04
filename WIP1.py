@@ -18,6 +18,7 @@ def main_page():
          <body>
           <h2> Link Scraper </h2>
           <form action="/result/" method="get">
+          
         	 Give me a URL to scrape for links:
         	<input type="text"  name="URL"
         			value="xkcd.com"
