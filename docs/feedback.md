@@ -1,6 +1,6 @@
-# Compiled feedback Notes from Prof
+# Compiled Feedback Notes from Prof
 
-## Spec Feedback
+## 6/9/24: Spec Feedback
 
 ### I agree, please start with a notebook. I think the visualization for a single user would be pretty simple, so how about you write a routine to randomly generate a HEXACO personality and store that in a csv file. You could then do more interesting summary statistics and plots with that.
 
