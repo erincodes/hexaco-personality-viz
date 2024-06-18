@@ -1,9 +1,6 @@
 """ Statistical data and model's details from
 https://hexaco.org/hexaco-inventory, pulled from https://github.com/salastro/hexaco-person/blob/main/src/model.py """
 
-
-# TODO: ESA - should I use a Pandas dataframe to work with this data?
-
 stats = {
     'h': {
         'name': 'Honesty',
