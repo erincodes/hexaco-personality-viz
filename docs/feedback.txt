@@ -1,5 +1,9 @@
 Compiled Feedback Notes from Prof
 
+6/20/24: Version 1 progress report A
+- Video of debugging demo, indexing error 
+- Was able to solve and get functions to pass, CSV file is generating
+
 6/9/24: Spec Feedback
 - I agree, please start with a notebook. I think the visualization for a single user would be pretty simple, so how about you write a routine to randomly generate a HEXACO personality and store that in a csv file. You could then do more interesting summary statistics and plots with that.
 - I don't forsee that processing would take very long and even if its a couple of seconds it's fine if the UI just freezes for now.
