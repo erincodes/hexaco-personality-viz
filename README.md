@@ -6,6 +6,8 @@ This project is based on data from the HEXACO psychological assessment tool (htt
 
 The survey consists of 100 questions, each mapped to one of the six personality dimensions. Respondents rate each question on a 5-point Likert scale, from 1 (strongly disagree) to 5 (strongly agree).
 
+Inspiration for this project taken from https://github.com/salastro/hexaco-person/blob/main/README.md
+
 ## File Structure:
 
 configs = Initial directory for any configuration files. Stubbed out a placeholder Plotly file for future use as UI visualization comes together.
