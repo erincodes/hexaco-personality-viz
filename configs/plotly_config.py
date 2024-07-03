@@ -5,5 +5,5 @@ df = pd.read_csv('data/0_random_scores.csv')
 df.head()
 print(df)
 
-fig = px.bar(df, x = 'Domain', y = 'Score', title='HEXACO Score Comparison')
+fig = px.bar(df, x = 'Domain', y = 'Score', title='HEXACO Personality Score Comparison')
 fig.show()
