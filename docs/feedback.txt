@@ -1,5 +1,9 @@
 Compiled Feedback Notes from Prof
 
+6/30/24:
+- CSV outputs contain scores and questions, only need scores
+- Update file path for CSV saving to be relative vs. absolute
+
 6/20/24: Version 1 progress report A
 - Video of debugging demo, indexing error 
 - Was able to solve and get functions to pass, CSV file is generating
