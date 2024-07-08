@@ -1,29 +1,18 @@
-# %% [markdown]
-# ### Main File - run the cells in this Jupyter notebook
+# will simuate the HEXACO survey for multiple participants
+# calculate the HEXACO scores for each participant and store them in a csv file
+# via a list of dictionaries (1 per user) with the following structure:
+# data = {
+#    1: {'H': 3.5, 'E': 3.2, 'X': 3.8, 'A': 2.9, 'C': 3.6, 'O': 3.7},
+#    2: {'H': 2.9, 'E': 3.7, 'X': 3.1, 'A': 2.7, 'C': 3.2, 'O': 3.0},
+# }
+#
+# df = pd.DataFrame(data)
 
-# %%
-# This is the file that is run by the "end user" 
-# Imports other modules to make use of their functions/classes
-
-# %%
-# TODO: ESA: Resource for folder structures for packages and modules, but this can wait until version 2:
-# https://docs.python-guide.org/writing/structure/
-
-# %%
+import pandas as pd
 import random
 import csv
 
-# Define the HEXACO baseline data
-# TODO: ESA - import these from model.py instead of including here directly? 
-stats = {
-    'h': {'name': 'Honesty', 'mean': 3.19, 'stdev': 0.62, 'color': 'orange'},
-    'e': {'name': 'Emotionality', 'mean': 3.43, 'stdev': 0.62, 'color': 'green'},
-    'x': {'name': 'Extraversion', 'mean': 3.50, 'stdev': 0.57, 'color': 'blue'},
-    'a': {'name': 'Agreeableness', 'mean': 2.94, 'stdev': 0.58, 'color': 'red'},
-    'c': {'name': 'Conscientiousness', 'mean': 3.44, 'stdev': 0.56, 'color': 'grey'},
-    'o': {'name': 'Openness', 'mean': 3.41, 'stdev': 0.60, 'color': 'violet'},
-}
-
+# Define the HEXACO questions
 questions100 = {
     1   : "I would be quite bored by a visit to an art gallery.",
     2   : "I clean my office or home quite frequently.",
@@ -140,60 +129,53 @@ domains_questions = {
     'o': [1, 7, 13, 19, 25, 31, 37, 43, 49, 55, 61, 67, 73, 79, 85, 91],
 }
 
-
-# %%
-# Function to generate random responses
-def generate_random_responses(num_questions):
-    responses = {}
-    for i in range(1, num_questions + 1):
-        responses[i] = random.randint(1, 5)
+# Function to generate random responses  # this may not needed if you use a docstring
+def generate_random_responses(num_questions=100): # would it not always be 100 questions?
+    '''Function to generate random responses'''  # CH put synopses in the docstring
+    responses = [] # no need for a dictionary here the sequential nature of a list is good enough
+    for i in range(0, num_questions): # if you start at 0 num_questions will work b/c it must overshoot anyway
+        responses.append(random.randint(1, 5))
     return responses
 
-# %%
-# Test function
-random_responses = generate_random_responses(10)
-#print("responses:", random_responses)
 
-# %%
-# Function to calculate scores
+# Function to calculate scores from responses
 def calculate_score(responses, domain_questions, reversal):
+    '''Function to calculate scores from responses'''
     scores = {}
     for domain, questions in domain_questions.items():
         score = 0
         for item in questions:
             if item in reversal:
-                score += 6 - responses[item]  # Reverse the score
+                score += 6 - responses[item]  # CH are you sure this is 6 and not 5?
             else:
                 score += responses[item]
         scores[domain] = score / len(questions)
     return scores
 
-# %%
-# Test function
-# TODO: ESA - struggling to get this to work, further debugging needed
-random_scores = calculate_score(random_responses, domains_questions, reversal)
-print("scores:", random_scores)
 
+def create_data(csv_file='hexaco_scores.csv', num_participants=200):
+    '''simulate the HEXACO survey for multiple participants and store 
+    them in a csv file. Returns the data as a pandas dataframe.'''
+    data = {}
+    # generate random responses for each participant
+    # calculate the HEXACO scores for each participant
+    for i in range(1, num_participants+1): # here, I DO want to start at 1
+        random_responses = generate_random_responses()
+        sc = calculate_score(random_responses, domains_questions, reversal)
+        data[i] = sc
+    
+    # Save the data to a csv file
+    df = pd.DataFrame(data)
+    df = df.T # Transpose (flip)the dataframe so that participants are rows and HEXACO scores are columns
+    df.to_csv(csv_file, index=False)
 
-# %%
-# TODO: ESA - started to write CSV function, but TBD until able to accurately generate scores 
+    return df   
 
-# Function to save to CSV
-def save_to_csv(filename, scores, responses):
-    with open(filename, mode='w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(["Domain", "Score"])
-        for domain, score in scores.items():
-            writer.writerow([domain, score])
-        
-        writer.writerow([])
-        writer.writerow(["Question", "Response"])
-        for question, response in responses.items():
-            writer.writerow([question, response])
+# dash input
+import dash
 
-# %%
-# Test function
-save_to_csv("random_profile.csv", random_scores, random_responses)
-print("Randomly generated HEXACO personality profile saved to random_profile.csv")
-
-
+# This makes it so it will only run if the script is run directly (main)
+# if it is imported into another script it will not run
+if __name__ == '__main__':
+    df = create_data("test.csv", 20)
+    print(df)
