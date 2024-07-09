@@ -1,2 +1,0 @@
-# Create a “Trait” OOP class that contains method processUserSelection that cleans the data and preps it for Plotly’s required format 
-# TODO: ESA - Move what's happening in main.ipynb into here to make an OOP class? 
