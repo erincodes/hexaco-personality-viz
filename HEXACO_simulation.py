@@ -131,7 +131,7 @@ domains_questions = {
 
 num_questions = len(questions_dict)
 
-def generate_random_responses(num_questions): 
+def generate_random_responses(): 
     '''Function to generate random responses'''
     responses = [] 
     for i in range(0, num_questions):
@@ -139,7 +139,6 @@ def generate_random_responses(num_questions):
     return responses
 
 
-# Function to calculate scores from responses
 def calculate_score(responses, domain_questions, reversal):
     '''Function to calculate scores from responses'''
     scores = {}
@@ -178,5 +177,5 @@ import dash
 # This makes it so it will only run if the script is run directly (main)
 # if it is imported into another script it will not run
 if __name__ == '__main__':
-    df = create_data("test.csv", 20)
+    df = create_data("data/combined/test.csv", 20)
     print(df)
