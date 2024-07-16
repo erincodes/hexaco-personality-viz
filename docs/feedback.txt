@@ -1,13 +1,17 @@
-Compiled Feedback Notes from Prof
+Compiled Feedback Notes & Comments from Prof
+
+7/15/24:
+- Have you looked into plot_data.ipynb and decided which type(s) of plots you want to use for your Dash app?
 
 7/8/24: 
-
 - Merged in his PR
 - It includes a module that creates a csv file with multiple simulated test results.
 - My suggestion is to figure out which type of plot you want and integrate that into a dash app. 
-- The app would load a simulated file with results for a (large) group of people, maybe all test done in your company so far.  I've given you an example of a upload to dash (did that after the recording was made)  
-- You would then upload results for one or more participants (maybe a group that was tested recently in a session) and plot these on top of your visualization of the large group for which I gave you 2 examples.
-- I guess another step would be to hook up the actual test, so somebody could do the test and immediatly see where they stand, but that's totally optional.
+- The app would load a simulated file with results for a (large) group of people, maybe all test done in your company so far.  
+- I've given you an example of a upload to dash (did that after the recording was made)  
+- You would then upload results for one or more participants (maybe a group that was tested recently in a session) 
+- And then plot these on top of your visualization of the large group for which I gave you 2 examples.
+- I guess another step would be to hook up the actual test, so somebody could do the test and immediately see where they stand, but that's totally optional.
 - Re classes: for none of this would you need to create  you own class as all the data would come from and go to dataframes and csv files
 
 6/30/24:
@@ -19,7 +23,9 @@ Compiled Feedback Notes from Prof
 - Was able to solve and get functions to pass, CSV file is generating
 
 6/9/24: Spec Feedback
-- I agree, please start with a notebook. I think the visualization for a single user would be pretty simple, so how about you write a routine to randomly generate a HEXACO personality and store that in a csv file. You could then do more interesting summary statistics and plots with that.
+- I agree, please start with a notebook. 
+- I think the visualization for a single user would be pretty simple, so how about you write a routine to randomly generate a HEXACO personality and store that in a csv file.
+- You could then do more interesting summary statistics and plots with that.
 - I don't forsee that processing would take very long and even if its a couple of seconds it's fine if the UI just freezes for now.
 - I like that you propose to use OOP for this.
 - Re GUI let's postpone that until the end of version 1, I have a couple of suggestions.
