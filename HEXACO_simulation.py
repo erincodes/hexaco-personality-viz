@@ -12,8 +12,8 @@ import pandas as pd
 import random
 import csv
 
-# Define the HEXACO questions
-questions100 = {
+# Define the baseline HEXACO questions
+questions_dict = {
     1   : "I would be quite bored by a visit to an art gallery.",
     2   : "I clean my office or home quite frequently.",
     3   : "I rarely hold a grudge, even against people who have badly wronged me.",
@@ -129,11 +129,12 @@ domains_questions = {
     'o': [1, 7, 13, 19, 25, 31, 37, 43, 49, 55, 61, 67, 73, 79, 85, 91],
 }
 
-# Function to generate random responses  # this may not needed if you use a docstring
-def generate_random_responses(num_questions=100): # would it not always be 100 questions?
-    '''Function to generate random responses'''  # CH put synopses in the docstring
-    responses = [] # no need for a dictionary here the sequential nature of a list is good enough
-    for i in range(0, num_questions): # if you start at 0 num_questions will work b/c it must overshoot anyway
+num_questions = len(questions_dict)
+
+def generate_random_responses(num_questions): 
+    '''Function to generate random responses'''
+    responses = [] 
+    for i in range(0, num_questions):
         responses.append(random.randint(1, 5))
     return responses
 
