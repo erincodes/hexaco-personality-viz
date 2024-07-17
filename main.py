@@ -1,20 +1,18 @@
-# TODO: ESA clean up comments in this file
+# Overview of main.py:
+# This file is the main executable for the project's logic
+# Simulates the HEXACO personality test for X number of participants
+# Calculates the scores for each participant across the HEXACO attributes
+# Stores these scores in a CSV file via a list of dictionaries (1 per participant)
 
-# will simuate the HEXACO survey for multiple participants
-# calculate the HEXACO scores for each participant and store them in a csv file
-# via a list of dictionaries (1 per user) with the following structure:
-# data = {
-#    1: {'H': 3.5, 'E': 3.2, 'X': 3.8, 'A': 2.9, 'C': 3.6, 'O': 3.7},
-#    2: {'H': 2.9, 'E': 3.7, 'X': 3.1, 'A': 2.7, 'C': 3.2, 'O': 3.0},
-# }
-#
-# df = pd.DataFrame(data)
+################## Imports ##################
 
 import pandas as pd
 import random
-import csv
+import dash
 
-# Define the baseline HEXACO questions
+################## Variable Definitions ##################
+
+# Baseline HEXACO test questions:
 questions_dict = {
     1   : "I would be quite bored by a visit to an art gallery.",
     2   : "I clean my office or home quite frequently.",
@@ -133,8 +131,9 @@ domains_questions = {
 
 num_questions = len(questions_dict)
 
+################## Helper Methods ##################
 def generate_random_responses(): 
-    '''Function to generate random responses'''
+    '''Function to generate random responses.'''
     responses = [] 
     for i in range(0, num_questions):
         responses.append(random.randint(1, 5))
@@ -142,42 +141,40 @@ def generate_random_responses():
 
 
 def calculate_score(responses, domain_questions, reversal):
-    '''Function to calculate scores from responses'''
+    '''Function to calculate scores from responses.'''
     scores = {}
     for domain, questions in domain_questions.items():
         score = 0
         for item in questions:
             if item in reversal:
-                score += 6 - responses[item]  # TODO: ESA - should this be 5 instead of 6?
+                score += 6 - responses[item]  # TODO: ESA - should this be 5 instead of 6 for the reversal score calc? 
             else:
                 score += responses[item]
         scores[domain] = score / len(questions)
     return scores
 
+################## Main Data Creation Method ##################
 
-def create_data(csv_file='hexaco_scores.csv', num_participants=200):
+def create_data(csv_file, num_participants):
     '''Simulate the HEXACO survey for multiple participants and store 
-    them in a csv file. Returns the data as a pandas dataframe.'''
+    them in a CSV file. Returns the data as a pandas dataframe.'''
     data = {}
-    # generate random responses for each participant
-    # calculate the HEXACO scores for each participant
-    for i in range(1, num_participants+1): # here, I DO want to start at 1
+    for i in range(1, num_participants + 1): 
         random_responses = generate_random_responses()
-        sc = calculate_score(random_responses, domains_questions, reversal)
-        data[i] = sc
-    
+        score = calculate_score(random_responses, domains_questions, reversal)
+        data[i] = score
     # Save the data to a csv file
     df = pd.DataFrame(data)
-    df = df.T # Transpose (flip)the dataframe so that participants are rows and HEXACO scores are columns
+    # Transpose (flip) the dataframe so that participants are rows and HEXACO scores are columns
+    df = df.T 
     df.to_csv(csv_file, index=False)
-
     return df   
 
-# dash input
-import dash
+################## Dash Configuration ##################
+# TODO: ESA - dash setup
 
 # This makes it so it will only run if the script is run directly (main)
 # if it is imported into another script it will not run
 if __name__ == '__main__':
-    df = create_data("data/combined/test.csv", 20)
+    df = create_data("data/combined/test.csv", 200)
     print(df)
