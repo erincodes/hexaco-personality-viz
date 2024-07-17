@@ -176,5 +176,5 @@ def create_data(file_to_create, num_participants):
 # This makes it so it will only run if the script is run directly (main)
 # if it is imported into another script it will not run
 if __name__ == '__main__':
-    df = create_data("data/combined/test.csv", 200)
+    df = create_data("data/combined-scores.csv", 200)
     print(df)
