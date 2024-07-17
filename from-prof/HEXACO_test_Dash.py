@@ -1,11 +1,11 @@
 import dash
 from dash import html, dcc, callback, Input, Output, State
-from HEXACO_simulation import questions100
+from main import questions_dict
 import pandas as pd
 
 
 # Just need a list of questions
-questions100 = [v for v in questions100.values()]
+questions100 = [v for v in questions_dict.values()]
 
 # Initialize the Dash app
 app = dash.Dash(__name__)
