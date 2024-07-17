@@ -155,7 +155,7 @@ def calculate_score(responses, domain_questions, reversal):
 
 ################## Main Data Creation Method ##################
 
-def create_data(csv_file, num_participants):
+def create_data(file_to_create, num_participants):
     '''Simulate the HEXACO survey for multiple participants and store 
     them in a CSV file. Returns the data as a pandas dataframe.'''
     data = {}
@@ -167,7 +167,7 @@ def create_data(csv_file, num_participants):
     df = pd.DataFrame(data)
     # Transpose (flip) the dataframe so that participants are rows and HEXACO scores are columns
     df = df.T 
-    df.to_csv(csv_file, index=False)
+    df.to_csv(file_to_create, index=False)
     return df   
 
 ################## Dash Configuration ##################
