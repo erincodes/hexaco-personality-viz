@@ -1,2 +1,0 @@
-If you encounter a bug that doesn't need to be fixed right away, make a note on your bug sheet. 
-Describe how it happened, so you can reproduce it down later and fix it.
