@@ -1,3 +1,6 @@
+# TODO: ESA - eventually delete this file, rolled it into main.py 
+# Keeping for reference for now
+
 # will simuate the HEXACO survey for multiple participants
 # calculate the HEXACO scores for each participant and store them in a csv file
 # via a list of dictionaries (1 per user) with the following structure:
