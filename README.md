@@ -19,3 +19,6 @@ docs = Resource and reference documentation files
 templates = Placeholder for directory required by Flask
 
 main.ipynb = Main Jupyter notebook runnable file
+
+<!-- TODO: ESA - update README at the end of coding -->
+<!-- Review this for structural finessing: https://docs.python-guide.org/writing/structure/ -->

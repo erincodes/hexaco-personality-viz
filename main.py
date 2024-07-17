@@ -116,10 +116,12 @@ questions_dict = {
     100 : "People see me as a hard-hearted person.",
 }
 
+# Question numbers that need to be scored with reversed weighting
 reversal = [1, 6, 9, 10, 12, 13, 15, 16, 19, 20, 21, 25, 29, 35, 36, 38, 41,
     42, 44, 50, 51, 52, 54, 55, 56, 59, 63, 66, 70, 72, 74, 75, 76, 77, 79, 80,
     82, 84, 85, 87, 89, 90, 91, 92, 93, 94, 95, 96, 99, 100]
 
+# Questions that map to each HEXACO trait
 domains_questions = {
     'h': [6, 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 84, 90, 96],
     'e': [5, 11, 17, 23, 29, 35, 41, 47, 53, 59, 65, 71, 77, 83, 89, 95],
