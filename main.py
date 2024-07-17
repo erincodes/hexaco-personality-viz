@@ -131,13 +131,11 @@ domains_questions = {
     'o': [1, 7, 13, 19, 25, 31, 37, 43, 49, 55, 61, 67, 73, 79, 85, 91],
 }
 
-num_questions = len(questions_dict)
-
 ################## Helper Methods ##################
 def generate_random_responses(): 
     '''Function to generate random responses.'''
     responses = [] 
-    for i in range(0, num_questions):
+    for i in range(0, len(questions_dict)):
         responses.append(random.randint(1, 5))
     return responses
 
