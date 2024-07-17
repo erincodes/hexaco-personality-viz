@@ -27,7 +27,8 @@ app.layout = [
     Input(component_id='controls-and-radio-item', component_property='value')
 )
 def update_graph(col_chosen):
-    fig = px.histogram(df, x='h', y=col_chosen, histfunc='avg')
+    # fig = px.histogram(df, x='h', y=col_chosen, histfunc='avg')
+    fig = px.bar(df, x = 'x', y = col_chosen, title='HEXACO Personality Score Comparison')
     return fig
 
 # Run the app
