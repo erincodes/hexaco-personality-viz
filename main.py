@@ -170,9 +170,6 @@ def create_data(file_to_create, num_participants):
     df.to_csv(file_to_create, index=False)
     return df   
 
-################## Dash Configuration ##################
-# TODO: ESA - dash setup
-
 # This makes it so it will only run if the script is run directly (main)
 # if it is imported into another script it will not run
 if __name__ == '__main__':

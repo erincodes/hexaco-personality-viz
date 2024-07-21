@@ -1,3 +1,5 @@
+################## Dash Configuration ##################
+# TODO: ESA - move this into main.py so that it's a "run a single file" situation?
 
 # Import packages
 from dash import Dash, html, dash_table, dcc, callback, Output, Input
