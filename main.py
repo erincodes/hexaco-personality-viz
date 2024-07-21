@@ -147,7 +147,7 @@ def calculate_score(responses, domain_questions, reversal):
         score = 0
         for item in questions:
             if item in reversal:
-                score += 6 - responses[item]  # TODO: ESA - should this be 5 instead of 6 for the reversal score calc? 
+                score += 5 - responses[item]  
             else:
                 score += responses[item]
         scores[domain] = score / len(questions)
