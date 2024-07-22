@@ -9,7 +9,7 @@
 
 import pandas as pd
 import random
-import plotly.express as px
+import plotly.express as px #Equivalent to: import plotly.graph_objects as go
 from dash import Dash, html, dash_table, dcc, callback, Output, Input
 
 ################## Variable Definitions ##################
@@ -166,10 +166,11 @@ def create_data(file_to_create, num_participants):
         score = calculate_score(random_responses, domains_questions, reversal)
         data[i] = score
     # Save the data to a csv file
+    # TODO: ESA - I'm saving it as a CSV and then later making it a DF again, fix that
     df = pd.DataFrame(data)
     # Transpose (flip) the dataframe so that participants are rows and HEXACO scores are columns
     df = df.T 
-    df.to_csv(file_to_create, index=False)
+    df.to_csv(file_to_create, index=True)
     return df   
 
 ################## Dash Configuration ##################
