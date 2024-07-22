@@ -181,44 +181,49 @@ def create_data(num_participants):
 users = 200
 data = create_data(users)
 
+# TODO: ESA - figure out how to pull in specific row data
+# row1 = data.loc[1:1]
+# row1 = data.loc[1]
+# print(row1)
+
 # Initialize the app
 app = Dash()
 
-display_info = {
-    "original":[15, 23, 32, 10, 23],
-    "model_1": [4,   8, 18,  6,  0],
-    "model_2": [11, 18, 18,  0,  20],
-    "labels": [
-        "H",
-        "E",
-        "X",
-        "A",
-        "C",
-        'O'
-    ]
-}
+horizontal_labels = [ 
+    "H",
+    "E",
+    "X",
+    "A",
+    "C",
+    'O'
+]
 
-fig2 = go.Figure(
+# TODO: ESA - pull in mean calculation Prof did
+mean = [15, 23, 32, 10, 23, 8]
+
+# TODO: ESA - hook this up to df data
+participant_1 = [4, 8, 18 , 6 , 2, 7]
+
+compare_to_average = go.Figure(
     data=[
         go.Bar(
-            name="Original",
-            x=display_info["labels"],
-            y=display_info["original"],
+            name="Average",
+            x=horizontal_labels,
+            y=mean,
             offsetgroup=0,
         ),
         go.Bar(
-            name="Model 1",
-            x=display_info["labels"],
-            y=display_info["model_1"],
+            name="Participant 1",
+            x=horizontal_labels,
+            y=participant_1,
             offsetgroup=1,
         ),
     ],
     layout=go.Layout(
-        title="Issue Types - Original and Models",
-        yaxis_title="Number of Issues"
+        title="Select Participants Compared to the Average",
+        yaxis_title="Score"
     )
 )
-fig2.show()
 
 # App layout
 app.layout = [
@@ -236,7 +241,7 @@ app.layout = [
     # TODO: ESA - seems like I need more data in my df in order to do additional comparisons
     # dcc.Graph(figure=px.histogram(data, x='h', y='e', histfunc='avg'))
 
-    dcc.Graph(figure=fig2)
+    dcc.Graph(figure=compare_to_average),
 
 ]
 
