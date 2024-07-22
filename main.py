@@ -157,26 +157,27 @@ def calculate_score(responses, domain_questions, reversal):
 
 ################## Main Data Creation Method ##################
 
-def create_data(file_to_create, num_participants):
+def create_data(num_participants):
     '''Simulate the HEXACO survey for multiple participants and store 
-    them in a CSV file. Returns the data as a pandas dataframe.'''
+    them as a Pandas dataframe.'''
     data = {}
     for i in range(1, num_participants + 1): 
         random_responses = generate_random_responses()
         score = calculate_score(random_responses, domains_questions, reversal)
         data[i] = score
-    # Save the data to a csv file
-    # TODO: ESA - I'm saving it as a CSV and then later making it a DF again, fix that
+
+    # Store the data as a dataframe
     df = pd.DataFrame(data)
+
     # Transpose (flip) the dataframe so that participants are rows and HEXACO scores are columns
     df = df.T 
-    df.to_csv(file_to_create, index=True)
+
     return df   
 
 ################## Dash Configuration ##################
 
 # Incorporate data
-df = pd.read_csv('data/combined-scores.csv')
+df = create_data(200)
 
 # Initialize the app
 app = Dash()
@@ -211,6 +212,4 @@ def update_graph(col_chosen):
 # This makes it so it will only run if the script is run directly (main)
 # if it is imported into another script it will not run
 if __name__ == '__main__':
-    df = create_data("data/combined-scores.csv", 200)
-    # print(df)
     app.run(debug=True)
