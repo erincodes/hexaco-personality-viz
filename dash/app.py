@@ -1,5 +1,5 @@
 ################## Dash Configuration ##################
-# TODO: ESA - move this into main.py so that it's a "run a single file" situation?
+# TODO: ESA - delete this file when things are working, moved into main.py
 
 # Import packages
 from dash import Dash, html, dash_table, dcc, callback, Output, Input
@@ -20,6 +20,8 @@ app.layout = [
     # 'Honesty-Humility', 'Emotionality', 'eXtraversion', 'Agreeableness', 'Conscientiousness', 'Openness']
     dcc.RadioItems(options=['h', 'e', 'x', 'a', 'c', 'o'], value='x', id='controls-and-radio-item'),
     dash_table.DataTable(data=df.to_dict('records'), page_size=10),
+
+    # The figure argument in Dash's Graph component is the same figure argument that is used by plotly.py
     # dcc.Graph(figure=px.histogram(df, x='h', y='e', histfunc='avg'))
     dcc.Graph(figure={}, id='controls-and-graph')
 ]
