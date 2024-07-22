@@ -156,7 +156,7 @@ def calculate_score(responses, domain_questions, reversal):
         scores[domain] = score / len(questions)
     return scores
 
-################## Main Data Creation Method ##################
+################## Data Creation ##################
 
 def create_data(num_participants):
     '''Simulate the HEXACO survey for multiple participants and store 
@@ -170,39 +170,31 @@ def create_data(num_participants):
     # Store the data as a dataframe
     df = pd.DataFrame(data)
 
-    # Transpose (flip) the dataframe so that participants are rows and HEXACO scores are columns
-    df = df.T 
-
     return df   
-
-################## Dash Configuration ##################
 
 # Generate simulated personality test data
 users = 200
-data = create_data(users)
+df = create_data(users)
 
-# TODO: ESA - figure out how to pull in specific row data
-# row1 = data.loc[1:1]
-# row1 = data.loc[1]
-# print(row1)
+# Capture a version of dataframe that is transposed (flipped)
+# Participants are rows and HEXACO scores are columns
+data_transposed = df.T
 
-# Initialize the app
-app = Dash()
+################## Data Visualizations ##################
 
+# Averages bar graph
 horizontal_labels = [ 
-    "H",
-    "E",
-    "X",
-    "A",
-    "C",
-    'O'
+    "Honesty-Humility (h)",
+    "Emotionality (e)",
+    "eXtraversion (x)",
+    "Agreeableness (a)",
+    "Conscientiousness (c)",
+    "Openness (o)"
 ]
 
 # TODO: ESA - pull in mean calculation Prof did
-mean = [15, 23, 32, 10, 23, 8]
-
-# TODO: ESA - hook this up to df data
-participant_1 = [4, 8, 18 , 6 , 2, 7]
+mean = [2, 2.5, 3.1, 1.25, 4, 2.75]
+participant_1 = df[1]
 
 compare_to_average = go.Figure(
     data=[
@@ -220,17 +212,21 @@ compare_to_average = go.Figure(
         ),
     ],
     layout=go.Layout(
-        title="Select Participants Compared to the Average",
+        title="Select Participant's Scores Compared to the Average",
         yaxis_title="Score"
     )
 )
 
+################## Dash Configuration ##################
+# Initialize the app
+app = Dash()
+
 # App layout
 app.layout = [
-    html.H1('HEXACO Personality Visualization'),
+    html.H1('HEXACO Personality Visualizations'),
     html.Hr(),
-    html.P('Simulated scores data for 200 participants across trait categories of Honesty-Humility (h), Emotionality (e), eXtraversion (x), Agreeableness (a), Conscientiousness (c), and Openness (o):'),
-    dash_table.DataTable(data=data.to_dict('records'), page_size=10),
+    html.P('Simulated scores data for 200 participants across 6 trait categories of Honesty-Humility (h), Emotionality (e), eXtraversion (x), Agreeableness (a), Conscientiousness (c), and Openness (o):'),
+    dash_table.DataTable(data=data_transposed.to_dict('records'), page_size=10),
 
     # Radio buttons section
     # html.P('Select which trait overview you would like to explore in the graph:'),
@@ -242,7 +238,6 @@ app.layout = [
     # dcc.Graph(figure=px.histogram(data, x='h', y='e', histfunc='avg'))
 
     dcc.Graph(figure=compare_to_average),
-
 ]
 
 # # Interaction controls
