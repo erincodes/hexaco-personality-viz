@@ -187,18 +187,16 @@ app = Dash()
 app.layout = [
     html.H1('HEXACO Personality Visualization'),
     html.Hr(),
-    html.P('Simulated score data for 200 participants:'),
+    html.P('Simulated scores data for 200 participants across trait categories of Honesty-Humility (h), Emotionality (e), eXtraversion (x), Agreeableness (a), Conscientiousness (c), and Openness (o):'),
     dash_table.DataTable(data=data.to_dict('records'), page_size=10),
 
-    html.P('Select which trait you would like to view:'),
-    # dcc.RadioItems(options=['pop', 'lifeExp', 'gdpPercap'], value='lifeExp', id='controls-and-radio-item'),
-    # 'Honesty-Humility', 'Emotionality', 'eXtraversion', 'Agreeableness', 'Conscientiousness', 'Openness']
-    dcc.RadioItems(options=['h', 'e', 'x', 'a', 'c', 'o'], value='x', id='controls-and-radio-item'),
-    
+    html.P('Select which trait overview you would like to explore in the graph:'),
+    dcc.RadioItems(options=['h', 'e', 'x', 'a', 'c', 'o'], value='h', id='controls-and-radio-item'),
 
-    # The figure argument in Dash's Graph component is the same figure argument that is used by plotly.py
-    # dcc.Graph(figure=px.histogram(df, x='h', y='e', histfunc='avg'))
-    dcc.Graph(figure={}, id='controls-and-graph')
+    dcc.Graph(figure={}, id='controls-and-graph'),
+
+    # TODO: ESA - seems like I need more data in my df in order to do additional comparisons
+    # dcc.Graph(figure=px.histogram(data, x='h', y='e', histfunc='avg'))
 ]
 # Add controls to build the interaction
 @callback(
@@ -206,13 +204,9 @@ app.layout = [
     Input(component_id='controls-and-radio-item', component_property='value')
 )
 def update_graph(col_chosen):
-    # fig = px.histogram(df, x='h', y=col_chosen, histfunc='avg')
-    fig = px.bar(data, x = 'x', y = col_chosen, title='HEXACO Personality Score Comparison')
+    fig = px.histogram(data, x='h', y=col_chosen, histfunc='avg', title='Average of Honest-Humility (h) Values')
+    # fig = px.bar(data, x = 'x', y = col_chosen, title='HEXACO Personality Score Comparison')
     return fig
-
-# # Run the app
-# if __name__ == '__main__':
-#     app.run(debug=True)
 
 # This makes it so it will only run if the script is run directly (main)
 # if it is imported into another script it will not run
