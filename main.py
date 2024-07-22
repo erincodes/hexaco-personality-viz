@@ -176,20 +176,25 @@ def create_data(num_participants):
 
 ################## Dash Configuration ##################
 
-# Incorporate data
-df = create_data(200)
+# Generate simulated personality test data
+users = 200
+data = create_data(users)
 
 # Initialize the app
 app = Dash()
 
 # App layout
 app.layout = [
-    html.Div(children='My First App with Data, Graph, and Controls'),
+    html.H1('HEXACO Personality Visualization'),
     html.Hr(),
+    html.P('Simulated score data for 200 participants:'),
+    dash_table.DataTable(data=data.to_dict('records'), page_size=10),
+
+    html.P('Select which trait you would like to view:'),
     # dcc.RadioItems(options=['pop', 'lifeExp', 'gdpPercap'], value='lifeExp', id='controls-and-radio-item'),
     # 'Honesty-Humility', 'Emotionality', 'eXtraversion', 'Agreeableness', 'Conscientiousness', 'Openness']
     dcc.RadioItems(options=['h', 'e', 'x', 'a', 'c', 'o'], value='x', id='controls-and-radio-item'),
-    dash_table.DataTable(data=df.to_dict('records'), page_size=10),
+    
 
     # The figure argument in Dash's Graph component is the same figure argument that is used by plotly.py
     # dcc.Graph(figure=px.histogram(df, x='h', y='e', histfunc='avg'))
@@ -202,7 +207,7 @@ app.layout = [
 )
 def update_graph(col_chosen):
     # fig = px.histogram(df, x='h', y=col_chosen, histfunc='avg')
-    fig = px.bar(df, x = 'x', y = col_chosen, title='HEXACO Personality Score Comparison')
+    fig = px.bar(data, x = 'x', y = col_chosen, title='HEXACO Personality Score Comparison')
     return fig
 
 # # Run the app
