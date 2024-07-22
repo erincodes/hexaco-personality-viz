@@ -192,9 +192,13 @@ horizontal_labels = [
     "Openness (o)"
 ]
 
-# TODO: ESA - pull in mean calculation Prof did
+# TODO: ESA - pull in mean calculation Prof did, use .describe() to get stats 
 mean = [2, 2.5, 3.1, 1.25, 4, 2.75]
 participant_1 = df[1]
+participant_2 = df[2]
+participant_3 = df[3]
+participant_4 = df[4]
+participant_5 = df[5]
 
 compare_to_average = go.Figure(
     data=[
@@ -210,9 +214,33 @@ compare_to_average = go.Figure(
             y=participant_1,
             offsetgroup=1,
         ),
+        go.Bar(
+            name="Participant 2",
+            x=horizontal_labels,
+            y=participant_2,
+            offsetgroup=2,
+        ),
+        go.Bar(
+            name="Participant 3",
+            x=horizontal_labels,
+            y=participant_3,
+            offsetgroup=3,
+        ),
+        go.Bar(
+            name="Participant 4",
+            x=horizontal_labels,
+            y=participant_4,
+            offsetgroup=4,
+        ),
+        go.Bar(
+            name="Participant 5",
+            x=horizontal_labels,
+            y=participant_5,
+            offsetgroup=5,
+        ),
     ],
     layout=go.Layout(
-        title="Select Participant's Scores Compared to the Average",
+        title="First 5 Participant's Scores, as Compared to the Overall Average:",
         yaxis_title="Score"
     )
 )
@@ -223,9 +251,10 @@ app = Dash()
 
 # App layout
 app.layout = [
-    html.H1('HEXACO Personality Visualizations'),
+    html.H1('HEXACO Personality Generated Data & Visualizations'),
     html.Hr(),
-    html.P('Simulated scores data for 200 participants across 6 trait categories of Honesty-Humility (h), Emotionality (e), eXtraversion (x), Agreeableness (a), Conscientiousness (c), and Openness (o):'),
+    html.P('Simulated scores data ranging from 1-5 for 200 participants across 6 categories.'),
+    html.P('Trait categories are: Honesty-Humility (h), Emotionality (e), eXtraversion (x), Agreeableness (a), Conscientiousness (c), and Openness (o):'),
     dash_table.DataTable(data=data_transposed.to_dict('records'), page_size=10),
 
     # Radio buttons section
