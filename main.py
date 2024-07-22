@@ -9,7 +9,8 @@
 
 import pandas as pd
 import random
-import dash
+import plotly.express as px
+from dash import Dash, html, dash_table, dcc, callback, Output, Input
 
 ################## Variable Definitions ##################
 
@@ -172,10 +173,6 @@ def create_data(file_to_create, num_participants):
     return df   
 
 ################## Dash Configuration ##################
-# Import packages
-from dash import Dash, html, dash_table, dcc, callback, Output, Input
-import pandas as pd
-import plotly.express as px
 
 # Incorporate data
 df = pd.read_csv('data/combined-scores.csv')
