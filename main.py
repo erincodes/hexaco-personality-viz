@@ -10,6 +10,7 @@
 import pandas as pd
 import random
 import plotly.express as px #Equivalent to: import plotly.graph_objects as go
+import plotly.graph_objects as go 
 from dash import Dash, html, dash_table, dcc, callback, Output, Input
 
 ################## Variable Definitions ##################
@@ -183,6 +184,42 @@ data = create_data(users)
 # Initialize the app
 app = Dash()
 
+display_info = {
+    "original":[15, 23, 32, 10, 23],
+    "model_1": [4,   8, 18,  6,  0],
+    "model_2": [11, 18, 18,  0,  20],
+    "labels": [
+        "H",
+        "E",
+        "X",
+        "A",
+        "C",
+        'O'
+    ]
+}
+
+fig2 = go.Figure(
+    data=[
+        go.Bar(
+            name="Original",
+            x=display_info["labels"],
+            y=display_info["original"],
+            offsetgroup=0,
+        ),
+        go.Bar(
+            name="Model 1",
+            x=display_info["labels"],
+            y=display_info["model_1"],
+            offsetgroup=1,
+        ),
+    ],
+    layout=go.Layout(
+        title="Issue Types - Original and Models",
+        yaxis_title="Number of Issues"
+    )
+)
+fig2.show()
+
 # App layout
 app.layout = [
     html.H1('HEXACO Personality Visualization'),
@@ -190,23 +227,28 @@ app.layout = [
     html.P('Simulated scores data for 200 participants across trait categories of Honesty-Humility (h), Emotionality (e), eXtraversion (x), Agreeableness (a), Conscientiousness (c), and Openness (o):'),
     dash_table.DataTable(data=data.to_dict('records'), page_size=10),
 
-    html.P('Select which trait overview you would like to explore in the graph:'),
-    dcc.RadioItems(options=['h', 'e', 'x', 'a', 'c', 'o'], value='h', id='controls-and-radio-item'),
+    # Radio buttons section
+    # html.P('Select which trait overview you would like to explore in the graph:'),
+    # dcc.RadioItems(options=['h', 'e', 'x', 'a', 'c', 'o'], value='h', id='controls-and-radio-item'),
 
-    dcc.Graph(figure={}, id='controls-and-graph'),
-
+    # Visualization
+    # dcc.Graph(figure={}, id='controls-and-graph'),
     # TODO: ESA - seems like I need more data in my df in order to do additional comparisons
     # dcc.Graph(figure=px.histogram(data, x='h', y='e', histfunc='avg'))
+
+    dcc.Graph(figure=fig2)
+
 ]
-# Add controls to build the interaction
-@callback(
-    Output(component_id='controls-and-graph', component_property='figure'),
-    Input(component_id='controls-and-radio-item', component_property='value')
-)
-def update_graph(col_chosen):
-    fig = px.histogram(data, x='h', y=col_chosen, histfunc='avg', title='Average of Honest-Humility (h) Values')
-    # fig = px.bar(data, x = 'x', y = col_chosen, title='HEXACO Personality Score Comparison')
-    return fig
+
+# # Interaction controls
+# @callback(
+#     Output(component_id='controls-and-graph', component_property='figure'),
+#     Input(component_id='controls-and-radio-item', component_property='value')
+# )
+# def update_graph(col_chosen):
+#     fig = px.histogram(data, x='h', y=col_chosen, histfunc='avg', title='Average of Honest-Humility (h) Values')
+#     # fig = px.bar(data, x = 'x', y = col_chosen, title='HEXACO Personality Score Comparison')
+#     return fig
 
 # This makes it so it will only run if the script is run directly (main)
 # if it is imported into another script it will not run
