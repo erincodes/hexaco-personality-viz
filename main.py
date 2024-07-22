@@ -1,11 +1,12 @@
 # Overview of main.py:
 # This file is the main executable for the project
 # Simulates the HEXACO personality test for X number of participants
-# Calculates the scores for each participant across the HEXACO attributes
-# Stores these scores in a CSV file via a list of dictionaries (1 per participant)
-# Serves up Dash app in browser to display data in interactive UI using Plotly charts 
+# Calculates the scores for each participant across the HEXACO categories
+# Stores these scores in a Pandas dataframe (via 1 list of dictionaries participant)
+# Serves up Dash app in browser to display data in interactive UI using Plotly data visualizations
 
 ################## Imports ##################
+# TODO: ESA - remove any imports I don't end up using
 
 import pandas as pd
 import random
@@ -135,6 +136,7 @@ domains_questions = {
 }
 
 ################## Helper Methods ##################
+
 def generate_random_responses(): 
     '''Function to generate random responses.'''
     responses = [] 
@@ -245,7 +247,8 @@ compare_to_average = go.Figure(
     )
 )
 
-################## Dash Configuration ##################
+################## Dash UI App Configuration ##################
+
 # Initialize the app
 app = Dash()
 
