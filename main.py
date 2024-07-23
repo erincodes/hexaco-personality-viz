@@ -250,6 +250,42 @@ compare_to_average = go.Figure(
     )
 )
 
+# Scatter plot with mean and standard deviation
+prt_values = [
+    df[1],
+    df[2],
+    df[3],
+    df[4],
+    df[5]
+]
+
+trait_scatter = px.bar(x=mean.index, y=mean, error_y=std)
+
+colors_used = []
+
+for i, my_values in enumerate(prt_values):
+    color = random.choice(px.colors.qualitative.Plotly)
+    while color in colors_used:
+        color = random.choice(px.colors.qualitative.Plotly)
+        colors_used.append(color)
+
+    trait_scatter.add_trace(go.Scatter(
+        x=['h', 'e', 'x', 'a', 'c', 'o'],
+        y=my_values,
+        mode='markers',
+        marker=dict(color=color, size=15),
+        name=f'Participant {i+1}'
+    ))
+
+
+trait_scatter.update_layout(
+    xaxis_title='Trait',
+    yaxis_title='Mean',
+    title=f'Average for Each Trait for First {len(prt_values)} Participants',
+    yaxis=dict(range=[2, 4])
+    
+)
+
 ################## Dash UI App Configuration ##################
 
 # Initialize the app
@@ -265,6 +301,9 @@ app.layout = [
 
     # Compare to Average bar graphs
     dcc.Graph(figure=compare_to_average),
+
+    # Scatter
+    dcc.Graph(figure=trait_scatter),
 
     # # Radio button selections
     # html.P('Select which trait overview you would like to explore in the graph:'),
