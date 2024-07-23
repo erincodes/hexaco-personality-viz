@@ -302,22 +302,7 @@ app.layout = [
 
     # Scatter
     dcc.Graph(figure=trait_scatter),
-
-    # # Radio button selections
-    # html.P('Select which trait overview you would like to explore in the graph:'),
-    # dcc.RadioItems(options=['h', 'e', 'x', 'a', 'c', 'o'], value='h', id='controls-and-radio-item'),
-    # dcc.Graph(figure={}, id='controls-and-graph'),
 ]
-
-# # Interaction controls
-# @callback(
-#     Output(component_id='controls-and-graph', component_property='figure'),
-#     Input(component_id='controls-and-radio-item', component_property='value')
-# )
-# def update_graph(col_chosen):
-#     # fig = px.histogram(data_transposed, x='h', y=col_chosen, histfunc='avg', title='Average of Honest-Humility (h) Values')
-#     fig = px.bar(data_transposed, x = 'x', y = col_chosen, title='Average of Honest-Humility (h) Values')
-#     return fig
 
 
 # This makes it so it will only run if the script is run directly (main)
