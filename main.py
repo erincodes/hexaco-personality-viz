@@ -263,17 +263,13 @@ app.layout = [
     html.P('Trait categories are: Honesty-Humility (h), Emotionality (e), eXtraversion (x), Agreeableness (a), Conscientiousness (c), and Openness (o):'),
     dash_table.DataTable(data=data_transposed.to_dict('records'), page_size=10),
 
-    # TODO: ESA - hook up radio buttons for 1 viz 
-    # Radio buttons section
+    # Compare to Average bar graphs
+    dcc.Graph(figure=compare_to_average),
+
+    # # Radio button selections
     # html.P('Select which trait overview you would like to explore in the graph:'),
     # dcc.RadioItems(options=['h', 'e', 'x', 'a', 'c', 'o'], value='h', id='controls-and-radio-item'),
-
-    # Visualization
     # dcc.Graph(figure={}, id='controls-and-graph'),
-    # TODO: ESA - seems like I need more data in my df in order to do additional comparisons
-    # dcc.Graph(figure=px.histogram(data, x='h', y='e', histfunc='avg'))
-
-    dcc.Graph(figure=compare_to_average),
 ]
 
 # # Interaction controls
@@ -282,11 +278,12 @@ app.layout = [
 #     Input(component_id='controls-and-radio-item', component_property='value')
 # )
 # def update_graph(col_chosen):
-#     fig = px.histogram(data, x='h', y=col_chosen, histfunc='avg', title='Average of Honest-Humility (h) Values')
-#     # fig = px.bar(data, x = 'x', y = col_chosen, title='HEXACO Personality Score Comparison')
+#     # fig = px.histogram(data_transposed, x='h', y=col_chosen, histfunc='avg', title='Average of Honest-Humility (h) Values')
+#     fig = px.bar(data_transposed, x = 'x', y = col_chosen, title='Average of Honest-Humility (h) Values')
 #     return fig
 
+
 # This makes it so it will only run if the script is run directly (main)
-# if it is imported into another script it will not run
+# If it is imported into another script it will not run
 if __name__ == '__main__':
     app.run(debug=True)
