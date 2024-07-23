@@ -182,6 +182,11 @@ df = create_data(users)
 # Participants are rows and HEXACO scores are columns
 data_transposed = df.T
 
+# Use built-in dataframe function to generate descriptive statistics
+summary_stats = data_transposed.describe()
+mean = summary_stats.loc['mean'] 
+std = summary_stats.loc['std']
+
 ################## Data Visualizations ##################
 
 # Averages bar graph
@@ -194,8 +199,6 @@ horizontal_labels = [
     "Openness (o)"
 ]
 
-# TODO: ESA - pull in mean calculation Prof did, use .describe() to get stats 
-mean = [2, 2.5, 3.1, 1.25, 4, 2.75]
 participant_1 = df[1]
 participant_2 = df[2]
 participant_3 = df[3]
@@ -260,6 +263,7 @@ app.layout = [
     html.P('Trait categories are: Honesty-Humility (h), Emotionality (e), eXtraversion (x), Agreeableness (a), Conscientiousness (c), and Openness (o):'),
     dash_table.DataTable(data=data_transposed.to_dict('records'), page_size=10),
 
+    # TODO: ESA - hook up radio buttons for 1 viz 
     # Radio buttons section
     # html.P('Select which trait overview you would like to explore in the graph:'),
     # dcc.RadioItems(options=['h', 'e', 'x', 'a', 'c', 'o'], value='h', id='controls-and-radio-item'),
