@@ -6,7 +6,6 @@
 # Serves up Dash app in browser to display data in interactive UI using Plotly data visualizations
 
 ################## Imports ##################
-# TODO: ESA - remove any imports I don't end up using
 
 import pandas as pd
 import random
@@ -187,9 +186,8 @@ summary_stats = data_transposed.describe()
 mean = summary_stats.loc['mean'] 
 std = summary_stats.loc['std']
 
-################## Data Visualizations ##################
+################## Averages bar graph ##################
 
-# Averages bar graph
 horizontal_labels = [ 
     "Honesty-Humility (h)",
     "Emotionality (e)",
@@ -250,7 +248,8 @@ compare_to_average = go.Figure(
     )
 )
 
-# Scatter plot with mean and standard deviation
+################## Scatter plot with mean and standard deviation ##################
+
 prt_values = [
     df[1],
     df[2],
@@ -276,7 +275,6 @@ for i, my_values in enumerate(prt_values):
         marker=dict(color=color, size=15),
         name=f'Participant {i+1}'
     ))
-
 
 trait_scatter.update_layout(
     xaxis_title='Trait',
