@@ -1,3 +1,5 @@
+# Run `pip install --upgrade -r requirements.txt` to install all packages
+
 dash                      >=2.17.1
 dash-core-components      >=2.0.0
 dash-html-components      >=2.0.0
