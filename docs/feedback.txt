@@ -1,5 +1,12 @@
 Compiled Feedback Notes & Comments from Prof
 
+7/23/24:
+- Good work putting it all together. Some suggestions: 
+- This is maybe silly (especially from me :) but the serif fonts of the non plotly parts really clashes with the sans serif font. 
+- Do you think you could figure out what font plotly uses by default and apply that to all your text? 
+- It'd be cool if there was a way to re-generate a new group of X users and see what changes. 
+- Do you think you can put in a number field for number of participants and a re-generate! button? If not I can look at it myself in a few days.
+
 7/15/24:
 - Have you looked into plot_data.ipynb and decided which type(s) of plots you want to use for your Dash app?
 
