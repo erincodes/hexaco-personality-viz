@@ -24,9 +24,9 @@ Your terminal will likely prompt you with a few packages to `pip` install, inclu
 
 Refer to the documentation linked above for additional installation troubleshooting as needed.
 
-Once all packages are installed, `main.py` will fully run and a message like this will appear in your terminal: `Dash is running on http://127.0.0.1:8050/`.
+Once all packages are installed, `main.py` will fully run and a message like this will appear in your terminal: `Dash is running on http://127.0.0.1:8050/`. Navigate to the link provided to view the interactive web UI.
 
-Navigate to the link provided to view the interactive web UI.
+![Example of expected output in web browser](https://github.com/erincodes/hexaco-personality-viz/blob/main/images/output-iu-example.png)
 
 ## Potential Gotchas:
 
