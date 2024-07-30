@@ -12,7 +12,7 @@ Inspiration for this project taken from https://github.com/salastro/hexaco-perso
 
 ## How to Install & Run
 
-This project uses a number of Python packages and tools. Start by running `main.py`; this is the single-source-of-truth file.
+This project uses a number of Python packages and tools. After you've cloned this repo, start by running `main.py`; this is the single-source-of-truth file.
 
 ![Image of where to click in VSCode to run a file](https://github.com/erincodes/hexaco-personality-viz/blob/main/images/run-file-VS-Code.png)
 
