@@ -291,10 +291,10 @@ app = Dash()
 
 # App layout
 app.layout = [
-    html.H1('HEXACO Personality Generated Data & Visualizations'),
+    html.H1('HEXACO Personality Generated Data & Visualizations', style={'fontFamily': 'verdana'}),
     html.Hr(),
-    html.P('Simulated scores data ranging from 1-5 for 200 participants across 6 categories.'),
-    html.P('Trait categories are: Honesty-Humility (h), Emotionality (e), eXtraversion (x), Agreeableness (a), Conscientiousness (c), and Openness (o):'),
+    html.P('Simulated scores data ranging from 1-5 for 200 participants across 6 categories.', style={'fontFamily': 'verdana'}),
+    html.P('Trait categories are: Honesty-Humility (h), Emotionality (e), eXtraversion (x), Agreeableness (a), Conscientiousness (c), and Openness (o):', style={'fontFamily': 'verdana'}),
     dash_table.DataTable(data=data_transposed.to_dict('records'), page_size=10),
 
     # Compare to Average bar graphs
