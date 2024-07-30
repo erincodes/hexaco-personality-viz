@@ -1,17 +1,17 @@
 # Overview of main.py:
 # This file is the main executable for the project
-# Simulates the HEXACO personality test for X number of participants
+# Simulates the HEXACO personality test for 200 number of participants
 # Calculates the scores for each participant across the HEXACO categories
-# Stores these scores in a Pandas dataframe (via 1 list of dictionaries participant)
+# Stores these scores in a Pandas dataframe (via 1 list of dictionaries per participant)
 # Serves up Dash app in browser to display data in interactive UI using Plotly data visualizations
 
 ################## Imports ##################
 
 import pandas as pd
 import random
-import plotly.express as px #Equivalent to: import plotly.graph_objects as go
+import plotly.express as px
 import plotly.graph_objects as go 
-from dash import Dash, html, dash_table, dcc, callback, Output, Input
+from dash import Dash, html, dash_table, dcc
 
 ################## Variable Definitions ##################
 
@@ -124,7 +124,7 @@ reversal = [1, 6, 9, 10, 12, 13, 15, 16, 19, 20, 21, 25, 29, 35, 36, 38, 41,
     42, 44, 50, 51, 52, 54, 55, 56, 59, 63, 66, 70, 72, 74, 75, 76, 77, 79, 80,
     82, 84, 85, 87, 89, 90, 91, 92, 93, 94, 95, 96, 99, 100]
 
-# Questions that map to each HEXACO trait
+# Assign each question to its HEXACO trait
 domains_questions = {
     'h': [6, 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 84, 90, 96],
     'e': [5, 11, 17, 23, 29, 35, 41, 47, 53, 59, 65, 71, 77, 83, 89, 95],
@@ -297,10 +297,10 @@ app.layout = [
     html.P('Trait categories are: Honesty-Humility (h), Emotionality (e), eXtraversion (x), Agreeableness (a), Conscientiousness (c), and Openness (o):', style={'fontFamily': 'verdana'}),
     dash_table.DataTable(data=data_transposed.to_dict('records'), page_size=10),
 
-    # Compare to Average bar graphs
+    # Place the Compare to Average bar graph
     dcc.Graph(figure=compare_to_average),
 
-    # Scatter
+    # Place the Scatter plot
     dcc.Graph(figure=trait_scatter),
 ]
 
