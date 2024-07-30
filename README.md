@@ -14,6 +14,8 @@ Inspiration for this project taken from https://github.com/salastro/hexaco-perso
 
 This project uses a number of Python packages and tools. Start by running `main.py`; this is the single-source-of-truth file.
 
+![Image of where to click in VSCode to run a file](https://github.com/erincodes/hexaco-personality-viz/blob/main/images/run-file-VS-Code.png)
+
 Your terminal will likely prompt you with a few packages to `pip` install, including but not limited to:
 
 - Pandas: https://pandas.pydata.org/getting_started.html
