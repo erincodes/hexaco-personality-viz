@@ -2,9 +2,9 @@
 
 ## Description:
 
-This project is based on data from the HEXACO psychological assessment tool (https://hexaco.org/). The HEXACO acronym comes from these major six dimensions of personality measured: Honesty-Humility, Emotionality, eXtraversion, Agreeableness (versus Anger), Conscientiousness, and Openness to Experience.
+This project is based on data from the HEXACO psychological assessment tool (https://hexaco.org/). The HEXACO acronym comes from these six dimensions of personality measured: Honesty-Humility, Emotionality, eXtraversion, Agreeableness (versus Anger), Conscientiousness, and Openness to Experience.
 
-The itself survey consists of 100 questions, each mapped to one of the six personality dimensions. Respondents rate each question on a 5-point Likert scale, from 1 (strongly disagree) to 5 (strongly agree).
+The survey itself consists of 100 questions, each mapped to one of the six personality dimensions. Respondents rate each question on a 5-point Likert scale, from 1 (strongly disagree) to 5 (strongly agree).
 
 This project simulates 200 respondents, calculates their scores, and then displays the output using Plotly visualizations in a web UI using Dash.
 
@@ -30,7 +30,7 @@ Once all packages are installed, `main.py` will fully run and a message like thi
 
 ## Potential Gotchas:
 
-Presently, if you want to see different results in the web output, you will need to re-run `main.py`. A potential future enhancement is to include a way to re-generate a new group of X users from the UI and see what changes.
+Presently, if you want to see different results in the web output, you will need to re-run `main.py`. A potential future enhancement is to include a way to regenerate a new group of X users from the UI and see what changes.
 
 ## File Structure:
 
@@ -41,9 +41,3 @@ Presently, if you want to see different results in the web output, you will need
 - `main_debug.py` = Debugging version of Jupyter notebook, used during development & testing to troubleshoot
 - `main.ipynb` = Jupyter notebook of main functionality, used during development & testing
 - `main.py` = Source-of-truth runnable file
-
-<!-- TODO: ESA - clean up README file for User's guide assignment  -->
-
-Describe how to use your project (preferably using screenshots), walking through it from a end user's perspective, step - by step, in a logical order.
-
-Hand in a link to your project ReadMe.md file
