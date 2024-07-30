@@ -12,19 +12,17 @@ Inspiration for this project taken from https://github.com/salastro/hexaco-perso
 
 ## How to Install & Run
 
-This project uses a number of Python packages and tools. After you've cloned this repo, start by running `main.py`; this is the single-source-of-truth file.
+This project uses a number of Python packages and tools. After you've cloned this repo, refer to `requirements.txt` to setup the required packages. For additional installation troubleshooting, please refer to these documentation pages as needed:
+
+- Dash: https://dash.plotly.com/installation
+- Pandas: https://pandas.pydata.org/getting_started.html
+- Plotly: https://plotly.com/python/getting-started/
+
+After packages are installed, open and run `main.py`; this is the single-source-of-truth file.
 
 ![Image of where to click in VSCode to run a file](https://github.com/erincodes/hexaco-personality-viz/blob/main/images/run-file-VS-Code.png)
 
-Your terminal will likely prompt you with a few packages to `pip` install, including but not limited to:
-
-- Pandas: https://pandas.pydata.org/getting_started.html
-- Plotly: https://plotly.com/python/getting-started/
-- Dash: https://dash.plotly.com/installation
-
-Refer to the documentation linked above for additional installation troubleshooting as needed.
-
-Once all packages are installed, `main.py` will fully run and a message like this will appear in your terminal: `Dash is running on http://127.0.0.1:8050/`. Navigate to the link provided to view the interactive web UI.
+A message like this will appear in your terminal when `main.py` runs successfully: `Dash is running on http://127.0.0.1:8050/`. Navigate to the link provided to view the interactive web UI.
 
 ![Example of expected output in web browser](https://github.com/erincodes/hexaco-personality-viz/blob/main/images/output-iu-example.png)
 
@@ -41,3 +39,4 @@ Presently, if you want to see different results in the web output, you will need
 - `main_debug.py` = Debugging version of Jupyter notebook, used during development & testing to troubleshoot
 - `main.ipynb` = Jupyter notebook of main functionality, used during development & testing
 - `main.py` = Source-of-truth runnable file
+- `requirements.txt` = List of required packages
