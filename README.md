@@ -18,11 +18,11 @@ This project uses a number of Python packages and tools. After you've cloned thi
 - Pandas: https://pandas.pydata.org/getting_started.html
 - Plotly: https://plotly.com/python/getting-started/
 
-After packages are installed, open and run `main.py`; this is the single-source-of-truth file.
+After packages are installed, open and run `main.py`; this is the single-source-of-truth file. You can run the file either by opening a terminal and running `python main.py` or click to run it within the VSCode interface:
 
 ![Image of where to click in VSCode to run a file](https://github.com/erincodes/hexaco-personality-viz/blob/main/images/run-file-VS-Code.png)
 
-A message like this will appear in your terminal when `main.py` runs successfully: `Dash is running on http://127.0.0.1:8050/`. Navigate to the link provided to view the interactive web UI.
+A message like this will appear in your terminal when `main.py` runs successfully: `Dash is running on http://127.0.0.1:8050/`. Navigate to the link provided to view the interactive web UI on a local server:
 
 ![Example of expected output in web browser](https://github.com/erincodes/hexaco-personality-viz/blob/main/images/output-iu-example.png)
 
