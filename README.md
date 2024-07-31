@@ -29,14 +29,3 @@ A message like this will appear in your terminal when `main.py` runs successfull
 ## Potential Gotchas:
 
 Presently, if you want to see different results in the web output, you will need to re-run `main.py`. A potential future enhancement is to include a way to regenerate a new group of X users from the UI and see what changes.
-
-## File Structure:
-
-- data = Generated data files used during development and testing. Keeping these to demonstration the project's evolution, but ultimately am managing data purely through Pandas dataframes.
-- docs = Resource and reference documentation files
-- examples_prof = Example files and ideas from Professor Harding
-- images = Screenshots to enhance project documentation
-- `main_debug.py` = Debugging version of Jupyter notebook, used during development & testing to troubleshoot
-- `main.ipynb` = Jupyter notebook of main functionality, used during development & testing
-- `main.py` = Source-of-truth runnable file
-- `requirements.txt` = List of required packages
