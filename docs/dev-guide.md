@@ -1,10 +1,10 @@
-# Developers' Guide
+# Developers Guide
 
 ## Overview
 
-This project randomly generates personality profiles in Python based on the HEXACO personality dataset. Then, using Pandas to process the data, the statistical averages were visualized using Plotly. Dash, which Plotly's preferred tool, was used to spin up a local dev server.
+This project randomly generates personality profiles in Python based on the HEXACO personality dataset. Then, using Pandas to process the data, the statistical averages are visualized using Plotly. Dash, which is Plotly's preferred tool, was used to spin up a local dev server.
 
-Review `README.md` for an introduction to the HEXACO personality test and data sources, as well as the steps to install & run the project.
+Please review `README.md` for an introduction to the HEXACO personality test and data sources, as well as the steps to install & run the project.
 
 ## File Structure:
 
@@ -17,15 +17,15 @@ Review `README.md` for an introduction to the HEXACO personality test and data s
 - `main.py` = Source-of-truth runnable file
 - `requirements.txt` = List of required packages
 
-# Project Specs
+## Project Specs
 
-- Refer to the spec documentation included in `/docs`
+- Please refer to the spec documentation included in `/docs`
 - Aspects of spec not implemented as of now:
   - Interactive controls in the UI
     - Spec outlined using a dropdown for users to select one of the personality traits to view the data for
     - Ultimately, the way I parsed the data was not conducive with this type of interface. Ideas to enhance included below in "Future Work"
 
-# Walkthrough
+## Walkthrough
 
 - `main.py` is the single-source-of-truth, runnable file
 
@@ -35,6 +35,7 @@ Review `README.md` for an introduction to the HEXACO personality test and data s
 - The frontend of this tool is a web browser UI
 
   - When the user first lands in the UI, they will see a header, some intro information, and a table output of the simulated personality score data.
+
     ![View when user lands in UI ](https://github.com/erincodes/hexaco-personality-viz/blob/main/images/output-header-table.png)
 
 - The second aspect of the UI is a bar chart visualization
@@ -55,14 +56,14 @@ Review `README.md` for an introduction to the HEXACO personality test and data s
 
   ![Scatter plot](https://github.com/erincodes/hexaco-personality-viz/blob/main/images/output-standard-deviation-scatter.png)
 
-# Known Issues
+## Known Issues
 
 - If you encounter any issues when running `main.py` on a Mac, recommend selecting a virtual environment (venv) kernel
 - The Dash local dev server will crash anytime you have an error. This can make things challenging when trying to refresh the UI to debug
-- If your hot reload isn't working, look to your terminal where you ran `main.py` and check for error messages as your first line of defense
+  - If your hot reload isn't working, look to your terminal where you ran `main.py` and check for error messages as your first line of defense
 - If you want to see different results in the web output, you will need to re-run `main.py`. Ideas of how to enhance this included below in "Future Work"
 
-# Future Work
+## Future Work
 
 - Regenerate a new group of users from the UI
   - Add a number input that represents the number of participants
