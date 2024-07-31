@@ -8,10 +8,10 @@ Please review `README.md` for an introduction to the HEXACO personality test and
 
 ## File Structure:
 
-- data = Generated data files used during development and testing. Keeping these to demonstration the project's evolution, but ultimately, data is being managed purely through Pandas dataframes (not using these CSVs)
-- docs = Resource and reference documentation files
-- examples_prof = Example files and ideas from Professor Harding (keeping for reference)
-- images = Screenshots to enhance project documentation
+- `/data` = Generated data files used during development and testing. Keeping these to demonstration the project's evolution, but ultimately, data is being managed purely through Pandas dataframes (not using these CSVs)
+- `/docs` = Resource and reference documentation files
+- `/examples_prof/` = Example files and ideas from Professor Harding (keeping for reference)
+- `/images/` = Screenshots to enhance project documentation
 - `main_debug.py` = Debugging version of Jupyter notebook, used during development & testing to troubleshoot
 - `main.ipynb` = Jupyter notebook of main functionality, used during development & testing
 - `main.py` = Source-of-truth runnable file
